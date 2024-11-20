@@ -42,3 +42,17 @@ def criar_atividade():
         return jsonify({'error': f'Campo obrigatório ausente: {str(e)}'}), 400
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@atividade_bp.route('/<int:idAtividade>',methods=['PUT'])
+def atualizar_atividade(idAtividade):
+    data = request.json
+    try:
+        atividade_atualizada = atividade_model.atualizar_atividade(
+            idAtividade,
+            id_disciplina = data.get('id_diciplina'),
+            enunciado = data.get('enunciado'),
+            respostas = data.get('respostas')
+        )
+        return jsonify(atividade_atualizada),200
+    except atividade_model.AtividadeNotFound:
+        return jsonify({'erro': 'Atividade não encontrada'}), 404

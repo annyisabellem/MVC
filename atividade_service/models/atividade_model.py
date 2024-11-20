@@ -43,3 +43,15 @@ def criar_atividade(id_disciplina, enunciado, respostas=None):
     }
     atividades.append(nova_atividade)
     return nova_atividade
+
+def atualizar_atividade(id_atividade, id_disciplina=None, enunciado=None, respostas=None):
+    for atividade in atividades:
+        if atividade['id_atividade'] == id_atividade:
+            if id_disciplina is not None:
+                atividade['id_disciplina'] = id_disciplina
+            if enunciado is not None:
+                atividade['enunciado'] = enunciado
+            if respostas is not None:
+                atividade['respostas'] = respostas
+            return atividade
+    raise AtividadeNotFound
