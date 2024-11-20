@@ -1,0 +1,8 @@
+atividade_service/__pycache__
+atividade_service/clients/__pycache__
+atividade_service/controllers/__pycache__
+atividade_service/models/__pycache__
+pessoa_service/__pycache__
+pessoa_service/models/__pycache__
+pessoa_service/services/__pycache__
+pessoa_service/controllers/__pycache__
