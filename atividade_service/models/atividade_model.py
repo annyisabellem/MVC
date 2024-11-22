@@ -55,3 +55,10 @@ def atualizar_atividade(id_atividade, id_disciplina=None, enunciado=None, respos
                 atividade['respostas'] = respostas
             return atividade
     raise AtividadeNotFound
+
+def deletar_atividade(id_atividade):
+    for atividade in atividades:
+        if atividade['id_atividade'] == id_atividade:
+            atividades.remove(atividade)
+            return f"Atividade {id_atividade} excluida com sucesso."
+    raise AtividadeNotFound    

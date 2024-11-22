@@ -49,10 +49,21 @@ def atualizar_atividade(idAtividade):
     try:
         atividade_atualizada = atividade_model.atualizar_atividade(
             idAtividade,
-            id_disciplina = data.get('id_diciplina'),
+            id_disciplina = data.get('id_disciplina'),
             enunciado = data.get('enunciado'),
             respostas = data.get('respostas')
         )
         return jsonify(atividade_atualizada),200
     except atividade_model.AtividadeNotFound:
         return jsonify({'erro': 'Atividade não encontrada'}), 404
+    
+@atividade_bp.route('/<int:id_atividade>', methods=['DELETE'])
+def deletar_atividades(id_atividade):
+    try:
+        atividade_model.deletar_atividade(id_atividade)
+        return jsonify ({'message': 'Atividade excluída!'}), 200
+    
+    except atividade_model.AtividadeNotFound:
+        return jsonify ({'erro': 'Atividade não encontratada'}), 404
+
+
